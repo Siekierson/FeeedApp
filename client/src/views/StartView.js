@@ -16,13 +16,13 @@ color:white;
 const StartView = () => {
     return(
         <>
-               <Slogan> Order meal now !</Slogan>
+               <Slogan>Zamów jedzenie teraz !</Slogan>
                <CityMeal>
-                   City: <Select/><br/>
-                   Restaurant: <Select/>
+                   Miasto: <Select/><br/>
+                   Restauracja: <Select/>
                    <br/>
                    <Link to='/ClassicOrPersonalize'>
-                   <button>Next Step</button>
+                   <button>Następny krok</button>
                    </Link>
                </CityMeal>
                </>

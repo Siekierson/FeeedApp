@@ -10,8 +10,8 @@ justify-content:space-between;
 const ClassicOrPersonalize = () => {
     return(
         <Wrapper>
-            <ButtonLink path='/classic'>Classic</ButtonLink>
-            <ButtonLink path='/customize'>Your Composition</ButtonLink> 
+            <ButtonLink path='/classic'>Klasyczne menu</ButtonLink>
+            <ButtonLink path='/customized'>Własna kompozycja</ButtonLink> 
         </Wrapper>
     )
 }
