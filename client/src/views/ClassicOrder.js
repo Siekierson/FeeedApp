@@ -1,11 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React,{useContext} from 'react';
+import {RestaurantsContext} from '../contexts/RestaurantsContext';
+// import styled from 'styled-components'
 import ButtonLink from '../components/atoms/ButtonLink';
 const ClassicOrder = () => {
+    const {restaurants} = useContext(RestaurantsContext)
     const pizzas = []
     return(
         <>
-        <div>Klasyczne Menu</div>
+        <h1>Klasyczne Menu</h1>
         <ul>
             {pizzas.map(item=>(
                 <li key={item}>{item}</li>

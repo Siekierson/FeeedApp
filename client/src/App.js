@@ -1,4 +1,5 @@
 import React from 'react';
+import RestaurantsProvider from './contexts/RestaurantsContext';
 import StartView from './views/StartView';
 import ClassicOrPersonalize from './views/ClassicOrPersonalize';
 import ClassicOrder from './views/ClassicOrder';
@@ -27,6 +28,7 @@ width:100vw;
 const App = () => {
   return (
     <div className="App">
+      <RestaurantsProvider>
       <Wrapper>
         <Video loop autoPlay >
         <source src={require('./assets/pizza.mp4')} type="video/mp4" />
@@ -43,6 +45,7 @@ const App = () => {
           </BrowserRouter>
         </ShadowBox>
       </Wrapper>
+      </RestaurantsProvider>
     </div>
   );
 }

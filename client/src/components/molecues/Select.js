@@ -9,15 +9,11 @@ background-color: rgb(0,0,0,.6);
 border-bottom:2px solid white;
 color:white;
 `
-const Select = () => {
+const Select = ({method,data}) => {
     return(
-    <SelectOne>
-        <Option>Siemiatycze</Option>
-        <Option>Białystok</Option>
-        <Option>Bielsk Podlaski</Option>
-        <Option>Siedlce</Option>
-        <Option>Warszawa</Option>
-    </SelectOne>        
+    <SelectOne onChange={method}>
+        {data.map(item=>(<Option value={item} key={item}>{item}</Option>))} 
+    </SelectOne>       
     )
 }
 export default Select;

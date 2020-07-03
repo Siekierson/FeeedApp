@@ -42,9 +42,9 @@ app.post('/addRestaurant',async(req,res)=>{
 
 app.put('/editRestaurant',async(req,res)=>{
     try{
-        const {login, password,fullname,city,default_meals,dflt_meals_desc,ingredient} = req.body;
-        const toEdit=[fullname,city,default_meals,dflt_meals_desc,ingredient]
-        const strings = ['fullname','city','default_meals','dflt_meals_desc','ingredient']
+        const {login, password,fullname,city,sizes,default_meals,ingredient} = req.body;
+        const toEdit=[fullname,city,sizes,default_meals,ingredient]
+        const strings = ['fullname','city','sizes','default_meals','ingredient']
         const newRestaurant = null
         const addProperties=async()=>{
             toEdit.forEach((item,index)=> typeof(item)==='undefined'?(null):(pool.query(`UPDATE restaurants SET ${strings[index]} = $1 WHERE restaurant_id=${existRow.restaurant_id}`,[item])))
@@ -72,5 +72,17 @@ app.delete('/deleteRestaurant/:id/:login/:password',async(req,res)=>{
     }
 })
 
+// get meals
+app.get('/meals/:name',async (req,res)=>{
+    try{
+        const {name}= req.params;
+        const restaurants= await pool.query('SELECT * FROM restaurants');
+        const restaurant = restaurants.rows.filter(item=>item.fullname===name);
+        const {sizes,default_meals,ingredient}=restaurant[0]
+        res.json({sizes:sizes,default_meals:default_meals,ingredient:ingredient})
+    }catch(err){
+        console.log(err.massage)
+    }
+})
 
 app.listen(port,()=>console.log(`Server is listening at http://localhost:${port}`));

@@ -6,9 +6,9 @@ CREATE TABLE restaurants(
     city VARCHAR(255),
     login VARCHAR(255),
     password VARCHAR(255),
-    default_meals TEXT [],
-    dflt_meals_desc TEXT [],
-    ingredient TEXT []
+    sizes integer [],
+    default_meals json [],
+    ingredient json []
 );
 CREATE TABLE orders(
     order_id SERIAL PRIMARY KEY,
