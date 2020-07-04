@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext,useEffect} from 'react';
 import styled from 'styled-components';
 import Select from '../components/molecues/Select';
 import {Link} from 'react-router-dom';
@@ -14,7 +14,10 @@ color:white;
 `
 
 const StartView = () => {
-    const {setActive} = useContext(RestaurantsContext)
+    const {active,setActive,setRestaurants} = useContext(RestaurantsContext)
+    useEffect(()=>{
+        fetch(`http://localhost:5000/meals/${active}`).then(data=>data.json()).then(data=>setRestaurants(data)) //get restaurants and push to context
+      },[active,setRestaurants])
     return(
         <>   
                <Slogan>Zamów jedzenie teraz !</Slogan>

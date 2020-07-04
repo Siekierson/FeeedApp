@@ -11,8 +11,8 @@ color:white;
 `
 const Select = ({method,data}) => {
     return(
-    <SelectOne onChange={method}>
-        {data.map(item=>(<Option value={item} key={item}>{item}</Option>))} 
+    <SelectOne onChange={method} >
+        {data.map((item,index)=>(<Option value={item} key={item}>{item}</Option>))} 
     </SelectOne>       
     )
 }

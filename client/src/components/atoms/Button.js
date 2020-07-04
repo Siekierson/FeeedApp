@@ -3,10 +3,12 @@ import styled from 'styled-components'
 
 const ButtonIn = styled.button`
 padding:20px;
+border-color:white;
+background-color:transparent;
 `
-const Button = ({children}) => {
+const Button = ({children,onClick}) => {
     return(
-    <ButtonIn>{children}</ButtonIn>
+    <ButtonIn onClick={onClick}>{children}</ButtonIn>
     )
 }
 export default Button;
