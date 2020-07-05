@@ -5,7 +5,7 @@ import ButtonLink from '../components/atoms/ButtonLink';
 import Button from '../components/atoms/Button';
 
 const CustomizedOrder = () => {
-    const {active, restaurants, setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
+    const { restaurants, setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
     const ingredients = restaurants.ingredient;
     const addToOrder=()=>setOrder(prev=>[...prev,hotMeal])
     return(
