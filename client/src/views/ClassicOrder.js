@@ -3,6 +3,7 @@ import {RestaurantsContext} from '../contexts/RestaurantsContext';
 import styled from 'styled-components'
 import ButtonLink from '../components/atoms/ButtonLink';
 import Button from '../components/atoms/Button';
+
 const EditSidebar= styled.div`
 position:fixed;
 height: 100vh;
@@ -11,10 +12,10 @@ right:${({isEditing}) => isEditing?'0':'-400px'};;
 top:0;
 `
 const ClassicOrder = () => {
-    const {active, restaurants,setOrder, order, hotMeal, setHotMeal} = useContext(RestaurantsContext);
+    const {active, restaurants, setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
     const [isEditing,setEditing]=useState(false);
     const pizzas = restaurants.default_meals;
-    const addToOrder=()=>{setOrder(prev=>[...prev,hotMeal])}
+    const addToOrder=()=>setOrder(prev=>[...prev,hotMeal])
     return(
         <>
         <h1>Klasyczne Menu restauracji {active}</h1>
@@ -28,10 +29,10 @@ const ClassicOrder = () => {
                             {size+' zł'}
                         </Button>)}
                     </div>
-                    <Button onClick={()=>setEditing(!isEditing)}>edytuj składniki</Button>
                 </li>
             ))}
         </ul>
+        {hotMeal&&<Button onClick={()=>setEditing(!isEditing)}>edytuj składniki</Button>}
         <EditSidebar isEditing={isEditing}>
             <Button onClick={()=>setEditing(false)}>Zakończ edycje</Button>
             {restaurants.ingredient.map((item,index)=>

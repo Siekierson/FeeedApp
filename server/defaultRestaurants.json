@@ -1,0 +1,230 @@
+[
+    {
+        "restaurant_id": 2,
+        "fullname": "Pizzeria Pepperoni",
+        "city": "Siemiatycze",
+        "login": "Pepperoni",
+        "password": "first",
+        "sizes": [
+            20,
+            35,
+            45
+        ],
+        "default_meals": [
+            {
+                "name": "Wezuwio",
+                "description": "szynka ser sos",
+                "value": [
+                    18,
+                    20,
+                    22
+                ]
+            },
+            {
+                "name": "Margheritta",
+                "description": "ser sos",
+                "value": [
+                    16,
+                    18,
+                    22
+                ]
+            },
+            {
+                "name": "Wiejska",
+                "description": "ser sos cebula szynka",
+                "value": [
+                    23,
+                    25,
+                    26
+                ]
+            },
+            {
+                "name": "Peperonii",
+                "description": "sos ser peperonii",
+                "value": [
+                    21,
+                    22,
+                    24
+                ]
+            }
+        ],
+        "ingredient": [
+            {
+                "name": "szynka",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "sos",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "cebula",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "peperonii",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "krewetki",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "rukola",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            }
+        ],
+        "customized": [
+            {
+                "size": 20,
+                "value": 18
+            },
+            {
+                "size": 35,
+                "value": 18
+            },
+            {
+                "size": 45,
+                "value": 22
+            }
+        ]
+    },
+    {
+        "restaurant_id": 1,
+        "fullname": "Pizzeria Karolina",
+        "city": "Siemiatycze",
+        "login": "Karolina",
+        "password": "first",
+        "sizes": [
+            25,
+            30,
+            40
+        ],
+        "default_meals": [
+            {
+                "name": "Wezuwio",
+                "description": "szynka ser sos",
+                "value": [
+                    18,
+                    20,
+                    22
+                ]
+            },
+            {
+                "name": "Margheritta",
+                "description": "ser sos",
+                "value": [
+                    16,
+                    18,
+                    22
+                ]
+            },
+            {
+                "name": "Wiejska",
+                "description": "ser sos cebula szynka",
+                "value": [
+                    23,
+                    25,
+                    26
+                ]
+            },
+            {
+                "name": "Peperonii",
+                "description": "sos ser peperonii",
+                "value": [
+                    21,
+                    22,
+                    24
+                ]
+            }
+        ],
+        "ingredient": [
+            {
+                "name": "szynka",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "sos",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "cebula",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "peperonii",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "krewetki",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            },
+            {
+                "name": "rukola",
+                "value": [
+                    2,
+                    3,
+                    5
+                ]
+            }
+        ],
+        "customized": [
+            {
+                "size": 20,
+                "value": 18
+            },
+            {
+                "size": 35,
+                "value": 18
+            },
+            {
+                "size": 45,
+                "value": 22
+            }
+        ]
+    }
+]

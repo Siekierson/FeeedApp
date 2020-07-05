@@ -8,7 +8,8 @@ CREATE TABLE restaurants(
     password VARCHAR(255),
     sizes integer [],
     default_meals json [],
-    ingredient json []
+    ingredient json [],
+    customized json []
 );
 CREATE TABLE orders(
     order_id SERIAL PRIMARY KEY,
