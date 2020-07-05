@@ -14,6 +14,6 @@ CREATE TABLE restaurants(
 CREATE TABLE orders(
     order_id SERIAL PRIMARY KEY,
     date VARCHAR(255),
-    order_description TEXT [],
-    client_data TEXT []
+    order_description json [],
+    client_data json []
 );

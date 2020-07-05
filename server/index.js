@@ -7,8 +7,11 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
+//
+/////Restaurants methods
+//
 
-//login
+//get restaurants
 
 app.get('/restaurants',async (req,res)=>{
     try{
@@ -80,6 +83,33 @@ app.get('/meals/:name',async (req,res)=>{
         const restaurant = restaurants.rows.filter(item=>item.fullname===name);
         const {sizes,default_meals,ingredient,customized}=restaurant[0]
         res.json({sizes:sizes,default_meals:default_meals,ingredient:ingredient,customized:customized})
+    }catch(err){
+        console.log(err.massage)
+    }
+})
+
+//
+/////Orders methods
+//
+
+//get orders
+
+app.get('/orders',async (req,res)=>{
+    try{
+        const orders= await pool.query('SELECT * FROM orders')
+        res.json(orders.rows)
+    }catch(err){
+        console.log(err.massage)
+    }
+})
+
+//create order
+
+app.post('/order',async (req,res)=>{
+    try{
+        const {login, password} = req.body;
+        const newOrder=await pool.query("INSERT INTO orders (login, password) VALUES($1,$2) RETURNING*",[login, password]);
+        res.end(newOrder)
     }catch(err){
         console.log(err.massage)
     }

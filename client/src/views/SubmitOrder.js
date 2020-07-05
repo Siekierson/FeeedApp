@@ -19,15 +19,12 @@ const SubmitOrder = () => {
         }))
         setValid(false)
     }
-    // const sendOrder = () =>{
-
-    // }
     const  maxLengthCheck = (object) => {
         if (object.target.value.length > object.target.maxLength) {
          object.target.value = object.target.value.slice(0, object.target.maxLength)
           }
         }
-    const sendFunction = (e) =>{
+    const sendOrder = (e) =>{
         e.preventDefault()
         data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length?(console.log('tri')):(setValid(true))
     }
@@ -43,7 +40,7 @@ const SubmitOrder = () => {
             ))}
         </ul>
         <ButtonLink path='/ClassicOrPersonalize'>Zapomniałem/am czegoś</ButtonLink>
-        <form onSubmit={sendFunction}>
+        <form onSubmit={sendOrder}>
             <AlertH invalid={invalid}>Nieprawidłowo wypełniono, nie wysłano zamówienia (sprawdź uważnie wszystkie pola)</AlertH>
             <label>Imię: <input required className='name' onChange={changeOneInput}/></label><br/>
             <label>Nazwisko: <input required className='surname' onChange={changeOneInput}/></label><br/>
