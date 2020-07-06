@@ -7,21 +7,42 @@ import CustomizedOrder from './views/CustomizedOrder';
 import styled from 'styled-components';
 import {BrowserRouter, Route,Switch} from 'react-router-dom';
 import SubmitOrder from './views/SubmitOrder';
+
 const Video = styled.video`
-width:100vw;
+position:fixed;
+top:0;
+left:0;
+@media (min-width:1700px) {
+    width:100%;
+    height: auto;
+}
+@media (max-width:1700px) {
+    width:auto;
+    height: 100%;
+    left:-10%;
+}
+@media (max-width:1400px) {
+    width:auto;
+    height: 100%;
+    left:-40%;
+}
+@media (max-width:700px) {
+    width:auto;
+    height: 100%;
+    left:-50%;
+}
 ` 
 const Wrapper = styled.div`
-width:100vw;
-height:100vh;
-overflow:hidden;
-`
-const ShadowBox = styled.div`
 position:absolute;
 top:0;
 left:0;
+text-align:center;
+width:100vw;
+`
+const ShadowBox = styled.div`
+position:fixed;
 height:100vh;
-padding: 20% 40px 40px 40px;
-background-color: rgba(0,0,0,.7);
+background-color: rgba(0,0,0,.75);
 width:100vw;
 `
 
@@ -29,11 +50,11 @@ const App = () => {
   return (
     <div className="App">
       <RestaurantsProvider>
-      <Wrapper>
         <Video loop autoPlay >
         <source src={require('./assets/pizza.mp4')} type="video/mp4" />
         </Video>
-        <ShadowBox>
+        <ShadowBox/>
+        <Wrapper>
           <BrowserRouter>
             <Switch>
               <Route exact path='/' component={StartView}/>
@@ -43,8 +64,7 @@ const App = () => {
               <Route path='/submit' component={SubmitOrder}/>
             </Switch>
           </BrowserRouter>
-        </ShadowBox>
-      </Wrapper>
+        </Wrapper>
       </RestaurantsProvider>
     </div>
   );

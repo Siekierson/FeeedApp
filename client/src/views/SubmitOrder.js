@@ -26,7 +26,7 @@ const SubmitOrder = () => {
         }
     const calcValue=()=>{
         let value=0;
-        order.map(item=>{
+        order.forEach(item=>{
             value+=item.value;
             item.bonus.map(bon=>value+=bon.value)
         })
