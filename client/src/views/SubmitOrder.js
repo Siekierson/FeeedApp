@@ -24,9 +24,28 @@ const SubmitOrder = () => {
          object.target.value = object.target.value.slice(0, object.target.maxLength)
           }
         }
-    const sendOrder = (e) =>{
+    const calcValue=()=>{
+        let value=0;
+        order.map(item=>{
+            value+=item.value;
+            item.bonus.map(bon=>value+=bon.value)
+        })
+        return value
+    }
+    const sendOrder =(e) =>{  
         e.preventDefault()
-        data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length?(console.log('tri')):(setValid(true))
+        const value=calcValue();  
+        const body = {
+            date: new Date().toLocaleString(),
+            value:`${value} zł`,
+            order_description: order,
+            client_data:data
+        }
+        order.length&&data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length?(fetch(`http://localhost:5000/order`,{
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          }).then(data=>console.log(data))):(setValid(true))
     }
     return(
         <>
@@ -34,8 +53,8 @@ const SubmitOrder = () => {
         <ul>
             {order.map((item,index)=>(
                 <li key={index}>
-                    <h1>{item.name} {restaurants.sizes[item.size]}cm </h1>
-                    <h2>{item.bonus.length>0 && 'dodatkowo:'+item.bonus.map(item=>` ${item.name}`)}</h2>
+                    <h1>{item.name} {restaurants.sizes[item.size]}cm ({item.value} zł) </h1>
+                    <h2>{item.bonus.length>0 && 'dodatkowo:'+item.bonus.map(item=>` ${item.name} (${item.value} zł)`)}</h2>
                 </li>
             ))}
         </ul>

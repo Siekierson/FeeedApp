@@ -107,12 +107,37 @@ app.get('/orders',async (req,res)=>{
 
 app.post('/order',async (req,res)=>{
     try{
-        const {login, password} = req.body;
-        const newOrder=await pool.query("INSERT INTO orders (login, password) VALUES($1,$2) RETURNING*",[login, password]);
-        res.end(newOrder)
+        const {date,value,order_description,client_data} = req.body;
+        const newOrder=await pool.query("INSERT INTO orders (date,value,order_description,client_data) VALUES($1,$2,$3,$4) RETURNING*",[date,value,order_description,client_data]);
+        // console.log(req.body)
+        res.json(newOrder)
     }catch(err){
         console.log(err.massage)
     }
 })
+
+//delete order
+
+app.delete('/order/:id',async (req,res)=>{
+    try{
+        const {id} = req.params;
+        const order=await pool.query('DELETE FROM orders WHERE order_id = $1',[id]);
+        res.end(order)
+    }catch(err){
+        console.log(err.massage)
+    }
+})
+// //all
+// app.delete('/orders',async (req,res)=>{
+//     try{
+//         const orders= await pool.query('DELETE * FROM orders')
+//         // res.json(orders)
+//         console.log(orders)
+//     }catch(err){
+//         console.log(err.massage)
+//     }
+// })
+
+
 
 app.listen(port,()=>console.log(`Server is listening at http://localhost:${port}`));
