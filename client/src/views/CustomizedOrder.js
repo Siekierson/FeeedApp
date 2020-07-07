@@ -52,7 +52,7 @@ const CustomizedOrder = () => {
                 )))}
                 
                 <ButtonLink onClick={addToOrder} path='/submit' >Do kasy</ButtonLink>
-                <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Powrót</ButtonLink>
+                <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink>
             </List>
 
         </Wrapper>

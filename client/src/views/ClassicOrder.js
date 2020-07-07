@@ -10,6 +10,7 @@ padding: 10%;
 const EditSidebar= styled.ul`
 position:fixed;
 list-style:none;
+transition:.5s;
 height: 100vh;
 width:400px;
 right:${({isEditing}) => isEditing?'0':'-400px'};;

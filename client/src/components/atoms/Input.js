@@ -1,10 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
+const InputIn=styled.input`
+background-color:transparent;
+padding:1px;
+font-size:3rem;
+outline:none;
+border:none;
+border-bottom:2px solid white;
+`
 
-const Input = () => {
+const Input = (props) => {
+
     return(
-        <input type='text'/>
+        <InputIn {...props}/>
     )
 }
 export default Input;

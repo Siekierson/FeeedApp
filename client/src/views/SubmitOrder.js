@@ -1,24 +1,49 @@
 import React,{useContext,useState} from 'react';
 import {RestaurantsContext} from '../contexts/RestaurantsContext';
 import ButtonLink from '../components/atoms/ButtonLink';
-import styled from 'styled-components'
+import Button from '../components/atoms/Button';
+import styled from 'styled-components';
+import Input from '../components/atoms/Input';
 
 const AlertH = styled.h2`
+font-size:2.4rem;
 color:red;
 display:${({invalid})=>invalid?'block':'none'};
 `
+const FlexLabel = styled.label`
+padding:20px;
+width:100%;
+text-align:center;
+display:flex;
+justify-content:space-around;
+`
+const FlexItem = styled.div`
+width:50%;
+`
+const Form = styled.form`
+margin:10px 20vw;
+width:60vw;
+display:flex;
+flex-direction:column;
+text-align:center;
+`
 
 const SubmitOrder = () => {
-    const {order,restaurants} = useContext(RestaurantsContext);
+    const {order,setOrder,restaurants} = useContext(RestaurantsContext);
     const [data,addData] = useState({});
     const [invalid,setValid] = useState(false)
     const changeOneInput = (e) =>{
-        const {className,value}=e.target
+        const {name,value}=e.target
         addData(prev=>({...prev,
-            [className]:value
+            [name]:value
         }))
         setValid(false)
     }
+    const removePizza = (index) => {
+        console.log(index)
+        setOrder(order.filter((item,ind) => ind !== index))
+    }
+    const labels = [['Imię','name'],['Nazwisko','surname' ],['Numer telefonu','phone',true,true],['Email','email'],['Miasto','city'],['Ulica','street'],['Numer domu lub bloku/mieszkania','homeNumber',true]]
     const  maxLengthCheck = (object) => {
         if (object.target.value.length > object.target.maxLength) {
          object.target.value = object.target.value.slice(0, object.target.maxLength)
@@ -40,12 +65,12 @@ const SubmitOrder = () => {
             value:`${value} zł`,
             order_description: order,
             client_data:data
-        }
-        order.length&&data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length?(fetch(`http://localhost:5000/order`,{
+        };
+        (order.length&&data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length)?(fetch(`http://localhost:5000/order`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body)
-          }).then(data=>console.log(data))):(setValid(true))
+          })):(setValid(true))
     }
     return(
         <>
@@ -55,21 +80,30 @@ const SubmitOrder = () => {
                 <li key={index}>
                     <h1>{item.name} {restaurants.sizes[item.size]}cm ({item.value} zł) </h1>
                     <h2>{item.bonus.length>0 && 'dodatkowo:'+item.bonus.map(item=>` ${item.name} (${item.value} zł)`)}</h2>
+                    <Button onClick={()=>removePizza(index)}>Jednak nie chce</Button>
                 </li>
             ))}
         </ul>
         <ButtonLink path='/ClassicOrPersonalize'>Zapomniałem/am czegoś</ButtonLink>
-        <form onSubmit={sendOrder}>
-            <AlertH invalid={invalid}>Nieprawidłowo wypełniono, nie wysłano zamówienia (sprawdź uważnie wszystkie pola)</AlertH>
-            <label>Imię: <input required className='name' onChange={changeOneInput}/></label><br/>
-            <label>Nazwisko: <input required className='surname' onChange={changeOneInput}/></label><br/>
-            <label>Numer telefonu: <input required type='number' maxLength="9" onInput={maxLengthCheck} className='phone' onChange={changeOneInput} /></label><br/>
-            <label>Email: <input  className='email' onChange={changeOneInput} /></label><br/>
-            <label>Miasto: <input required className='city' onChange={changeOneInput}/></label><br/>
-            <label>Ulica: <input required className='street' onChange={changeOneInput}/></label><br/>
-            <label>Numer domu lub bloku/mieszkania: <input required type='number' className='homeNumber' onChange={changeOneInput}/></label><br/>
-            <button type='submit'>złóż zamówienie</button>
-        </form>
+        <AlertH invalid={invalid}>Nieprawidłowo wypełniono, nie wysłano zamówienia (sprawdź uważnie wszystkie pola i zamówienie(nie można wysłać pustego zamówienia))</AlertH>
+        <Form onSubmit={sendOrder}>
+            {
+                labels.map(item=>(
+                    <FlexLabel key={item[1]}>
+                        <FlexItem>{item[0]}: </FlexItem>
+                        <FlexItem><Input 
+                        required 
+                        type={item[2]?"number":"text"} 
+                        maxLength={item[3]&&"9"}
+                        onInput={item[3]&&maxLengthCheck}
+                        name={item[1]} 
+                        onChange={changeOneInput}/>
+                        <br/></FlexItem>
+                    </FlexLabel>
+                ))
+            }
+            <Button type='submit'>wyślij zamówienie</Button>
+        </Form>
         </>
     )
 }
