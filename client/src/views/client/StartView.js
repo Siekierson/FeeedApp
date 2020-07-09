@@ -1,8 +1,8 @@
 import React,{useContext,useEffect} from 'react';
 import styled from 'styled-components';
-import Select from '../components/molecues/Select';
-import ButtonLink from '../components/atoms/ButtonLink';
-import {RestaurantsContext} from '../contexts/RestaurantsContext';
+import Select from '../../components/molecues/Select';
+import ButtonLink from '../../components/atoms/ButtonLink';
+import {RestaurantsContext} from '../../contexts/RestaurantsContext';
 
 const Wrapper = styled.div`
 color:white;

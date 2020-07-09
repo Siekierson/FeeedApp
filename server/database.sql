@@ -13,6 +13,7 @@ CREATE TABLE restaurants(
 );
 CREATE TABLE orders(
     order_id SERIAL PRIMARY KEY,
+    rest_name VARCHAR(255),
     date VARCHAR(255),
     value VARCHAR(255),
     order_description json [],

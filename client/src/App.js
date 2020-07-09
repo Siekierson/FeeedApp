@@ -1,12 +1,13 @@
 import React from 'react';
 import RestaurantsProvider from './contexts/RestaurantsContext';
-import StartView from './views/StartView';
-import ClassicOrPersonalize from './views/ClassicOrPersonalize';
-import ClassicOrder from './views/ClassicOrder';
-import CustomizedOrder from './views/CustomizedOrder';
+import StartView from './views/client/StartView';
+import ClassicOrPersonalize from './views/client/ClassicOrPersonalize';
+import ClassicOrder from './views/client/ClassicOrder';
+import CustomizedOrder from './views/client/CustomizedOrder';
 import styled from 'styled-components';
 import {BrowserRouter, Route,Switch} from 'react-router-dom';
-import SubmitOrder from './views/SubmitOrder';
+import SubmitOrder from './views/client/SubmitOrder';
+import Restaurant from './views/restaurant/Restaurant';
 
 const Video = styled.video`
 position:fixed;
@@ -62,6 +63,8 @@ const App = () => {
               <Route path='/classic' component={ClassicOrder}/>
               <Route path='/customized' component={CustomizedOrder}/>
               <Route path='/submit' component={SubmitOrder}/>
+              <Route path='/submit' component={SubmitOrder}/>
+              <Route path='/restaurant' component={Restaurant}/>
             </Switch>
           </BrowserRouter>
         </Wrapper>

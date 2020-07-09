@@ -1,8 +1,8 @@
 import React,{useState,useContext} from 'react';
-import {RestaurantsContext} from '../contexts/RestaurantsContext';
+import {RestaurantsContext} from '../../contexts/RestaurantsContext';
 import styled from 'styled-components'
-import ButtonLink from '../components/atoms/ButtonLink';
-import Button from '../components/atoms/Button';
+import ButtonLink from '../../components/atoms/ButtonLink';
+import Button from '../../components/atoms/Button';
 
 const Wrapper = styled.div`
 padding: 10%;

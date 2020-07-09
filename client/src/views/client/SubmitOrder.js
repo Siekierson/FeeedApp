@@ -1,9 +1,9 @@
 import React,{useContext,useState} from 'react';
-import {RestaurantsContext} from '../contexts/RestaurantsContext';
-import ButtonLink from '../components/atoms/ButtonLink';
-import Button from '../components/atoms/Button';
+import {RestaurantsContext} from '../../contexts/RestaurantsContext';
+import ButtonLink from '../../components/atoms/ButtonLink';
+import Button from '../../components/atoms/Button';
 import styled from 'styled-components';
-import Input from '../components/atoms/Input';
+import Input from '../../components/atoms/Input';
 
 const AlertH = styled.h2`
 font-size:2.4rem;
@@ -29,7 +29,7 @@ text-align:center;
 `
 
 const SubmitOrder = () => {
-    const {order,setOrder,restaurants} = useContext(RestaurantsContext);
+    const {active,order,setOrder,restaurants} = useContext(RestaurantsContext);
     const [data,addData] = useState({});
     const [invalid,setValid] = useState(false)
     const changeOneInput = (e) =>{
@@ -62,6 +62,7 @@ const SubmitOrder = () => {
         const value=calcValue();  
         const body = {
             date: new Date().toLocaleString(),
+            rest_name:active,
             value:`${value} zł`,
             order_description: order,
             client_data:data

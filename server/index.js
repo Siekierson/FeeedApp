@@ -1,5 +1,6 @@
 const express= require('express');
 
+
 const app=express();
 const cors= require('cors');
 const pool=require('./db')
@@ -107,8 +108,8 @@ app.get('/orders',async (req,res)=>{
 
 app.post('/order',async (req,res)=>{
     try{
-        const {date,value,order_description,client_data} = req.body;
-        const newOrder=await pool.query("INSERT INTO orders (date,value,order_description,client_data) VALUES($1,$2,$3,$4) RETURNING*",[date,value,order_description,client_data]);
+        const {date,rest_name,value,order_description,client_data} = req.body;
+        const newOrder=await pool.query("INSERT INTO orders (date,rest_name,value,order_description,client_data) VALUES($1,$2,$3,$4,$5) RETURNING*",[date,rest_name,value,order_description,client_data]);
         // console.log(req.body)
         res.json(newOrder)
     }catch(err){
@@ -135,8 +136,23 @@ app.delete('/order/:id',async (req,res)=>{
 //         console.log(orders)
 //     }catch(err){
 //         console.log(err.massage)
-//     }
+//     } v
 // })
+
+//Restaurant authentication
+
+app.get('/logRestaurant/:login/:password',async (req,res)=>{
+    try{
+        const {login, password} = req.params;
+        const rest= await pool.query('SELECT * FROM restaurants WHERE login= $1',[login]);
+        if(rest.rows[0].password==password){
+            res.json(rest.rows[0])
+        }
+       res.end()
+    }catch(err){
+        console.log(err.massage)
+    }
+})
 
 
 
