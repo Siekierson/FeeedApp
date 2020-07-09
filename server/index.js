@@ -154,6 +154,18 @@ app.get('/logRestaurant/:login/:password',async (req,res)=>{
     }
 })
 
+//get orders to restaurant
+
+app.post('/resOrders',async (req,res)=>{
+    try{
+        const {restaurant} = req.body;
+        const orders= await pool.query('SELECT * FROM orders WHERE rest_name= $1',[restaurant]);
+        res.json(orders.rows)
+    }catch(err){
+        console.log(err.massage)
+    }
+})
+
 
 
 app.listen(port,()=>console.log(`Server is listening at http://localhost:${port}`));

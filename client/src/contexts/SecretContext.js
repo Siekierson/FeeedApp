@@ -3,9 +3,9 @@ import React, { createContext, useState } from 'react';
 export const SecretContext = createContext();
 
 const SecretProvider = (props) => {
-  const [secret, setSecret] = useState(false);
+  const [active, setActive] = useState(false);
   return (
-    <SecretContext.Provider value={{secret, setSecret}}>
+    <SecretContext.Provider value={{active, setActive}}>
       {props.children}
     </SecretContext.Provider>
   )

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import {SecretContext} from '../../contexts/SecretContext';
 const Login = ()=>{
   const [logpass,setLogpass]=useState({});
-  const {secret, setSecret} = useContext(SecretContext);
+  const {active, setActive} = useContext(SecretContext);
   let history = useHistory();
   const handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -14,7 +14,10 @@ const Login = ()=>{
   const onSubmit = async(e) => {
     e.preventDefault();
     const {login,password}=logpass;
-    await fetch(`http://localhost:5000/logRestaurant/${login}/${password}`).then(res =>res.json()).then(data=>history.push("/panel"))
+    await fetch(`http://localhost:5000/logRestaurant/${login}/${password}`).then(res =>res.json()).then(data=>{
+      setActive(data.fullname)
+      history.push("/panel")
+    })
     .catch(err => {
       console.error(err);
       alert('Error logging in please try again');
