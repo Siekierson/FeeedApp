@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import {SecretContext} from '../../contexts/SecretContext';
 const Login = ()=>{
   const [logpass,setLogpass]=useState({});
-  const {active, setActive} = useContext(SecretContext);
+  const {setActive} = useContext(SecretContext);
   let history = useHistory();
   const handleInputChange = (event) => {
     const { value, name } = event.target;

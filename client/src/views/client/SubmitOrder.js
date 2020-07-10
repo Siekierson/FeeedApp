@@ -43,7 +43,7 @@ const SubmitOrder = () => {
         console.log(index)
         setOrder(order.filter((item,ind) => ind !== index))
     }
-    const labels = [['Imię','name'],['Nazwisko','surname' ],['Numer telefonu','phone',true,true],['Email','email'],['Miasto','city'],['Ulica','street'],['Numer domu lub bloku/mieszkania','homeNumber',true]]
+    const labels = [['Imię','name'],['Nazwisko','surname' ],['Numer telefonu','phone',true,true],['Email','email'],['Miasto','city'],['Ulica','street'],['Numer domu lub bloku/mieszkania','homeNumber']]
     const  maxLengthCheck = (object) => {
         if (object.target.value.length > object.target.maxLength) {
          object.target.value = object.target.value.slice(0, object.target.maxLength)
@@ -67,20 +67,25 @@ const SubmitOrder = () => {
             order_description: order,
             client_data:data
         };
-        (order.length&&data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length)?(fetch(`http://localhost:5000/order`,{
+        if(order.length&&data.name.length&&data.surname.length&&data.phone.length===9&&data.city.length&&data.street.length&&data.homeNumber.length){fetch(`http://localhost:5000/order`,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body)
-          })):(setValid(true))
+          });
+          alert('Wysłano')
+        }
+        else{
+            setValid(true)
+        }
     }
     return(
         <>
-        <h1>Podsumowanie</h1>
+        <h1 style={{'padding':'20px'}}>Podsumowanie</h1>
         <ul>
             {order.map((item,index)=>(
                 <li key={index}>
-                    <h1>{item.name} {restaurants.sizes[item.size]}cm ({item.value} zł) </h1>
-                    <h2>{item.bonus.length>0 && 'dodatkowo:'+item.bonus.map(item=>` ${item.name} (${item.value} zł)`)}</h2>
+                    <h2>{item.name} {restaurants.sizes[item.size]}cm ({item.value} zł) </h2>
+                    <h3>{item.bonus.length>0 && 'dodatkowo:'+item.bonus.map(item=>` ${item.name} (${item.value} zł)`)}</h3>
                     <Button onClick={()=>removePizza(index)}>Jednak nie chce</Button>
                 </li>
             ))}

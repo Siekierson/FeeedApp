@@ -37,6 +37,12 @@ const ClassicOrder = () => {
     const [isEditing,setEditing]=useState(false);
     const pizzas = restaurants.default_meals;
     const addToOrder=()=>setOrder(prev=>[...prev,hotMeal])
+    const isDuplicate=(item)=>{
+        const duplicate=hotMeal.bonus.map(i=>(i.name===item.name));
+        if(duplicate.indexOf(true)===-1){setHotMeal(prev=>({...prev,
+            bonus:[...hotMeal.bonus,{name:item.name,value:item.value[hotMeal.size]}]
+        }))}
+        }
     return(
         <Wrapper>
         <h1>Klasyczne Menu restauracji {active}</h1>
@@ -58,9 +64,7 @@ const ClassicOrder = () => {
             <Button onClick={()=>setEditing(false)}>Zakończ edycje</Button>
             {restaurants.ingredient.map((item,index)=>
                 <li key={item.name}>
-                    <Button onClick={()=>{
-                        setHotMeal(prev=>({...prev,
-                        bonus:[...hotMeal.bonus,{name:item.name,value:item.value[hotMeal.size]}]}))}}>
+                    <Button onClick={()=>isDuplicate(item)}>
                         {item.name}
                     </Button>
                     <div>

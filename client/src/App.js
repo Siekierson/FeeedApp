@@ -11,26 +11,14 @@ import Restaurant from './views/restaurant/Restaurant';
 
 const Video = styled.video`
 position:fixed;
-top:0;
-left:0;
-@media (min-width:1700px) {
-    width:100%;
-    height: auto;
-}
-@media (max-width:1700px) {
+top:-10%;
+left:-10%;
+width:120%;
+@media (max-width:1500px) {
+  top:0;
     width:auto;
-    height: 100%;
-    left:-10%;
-}
-@media (max-width:1400px) {
-    width:auto;
-    height: 100%;
+    height: 100vh;
     left:-40%;
-}
-@media (max-width:700px) {
-    width:auto;
-    height: 100%;
-    left:-50%;
 }
 ` 
 const Wrapper = styled.div`

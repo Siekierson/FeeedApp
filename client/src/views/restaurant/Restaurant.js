@@ -7,7 +7,7 @@ import Panel from './Panel'
 const Wrapper = styled.div`
 display:flex;
 width:100%;
-padding: 20% 40px 40px 40px;
+padding: 10% 40px 40px 40px;
 justify-content: space-around;
 `
 const Restaurant = () => {

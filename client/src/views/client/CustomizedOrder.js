@@ -20,6 +20,12 @@ const CustomizedOrder = () => {
     const [clicked,setClicked]=useState(false)
     const ingredients = restaurants.ingredient;
     const addToOrder=()=>setOrder(prev=>[...prev,hotMeal])
+    const isDuplicate=(item)=>{
+        const duplicate=hotMeal.bonus.map(i=>(i.name===item.name));
+        if(duplicate.indexOf(true)===-1){setHotMeal(prev=>({...prev,
+            bonus:[...hotMeal.bonus,{name:item.name,value:item.value[hotMeal.size]}]
+        }))}
+        }
     return(
         <Wrapper>
             <h1>Twoja kompozycja dania !</h1>
@@ -39,9 +45,7 @@ const CustomizedOrder = () => {
                 <h3>A teraz składniki</h3>
                 {clicked &&(ingredients.map(item=>(
                     <ListItem key={item.name}>
-                        <Button onClick={()=>{
-                            setHotMeal(prev=>({...prev,
-                            bonus:[...hotMeal.bonus,{name:item.name,value:item.value[hotMeal.size]}]}))}}>
+                        <Button onClick={()=>isDuplicate(item)}>
                             {item.name}
                             <div>
                             {hotMeal.name?item.value[hotMeal.size]+' zł':item.value.map(item=>item+'zł  ')}
