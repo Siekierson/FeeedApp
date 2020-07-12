@@ -1,21 +1,16 @@
 import React,{useContext,useEffect} from 'react';
 import styled from 'styled-components';
+import Wrapper from '../../components/atoms/Wrapper';
 import Select from '../../components/molecues/Select';
 import ButtonLink from '../../components/atoms/ButtonLink';
 import {RestaurantsContext} from '../../contexts/RestaurantsContext';
 
-const Wrapper = styled.div`
-color:white;
-width:100%;
-padding: 20% 40px 40px 40px;
-text-align:center;
-`
 const CityMeal = styled.div`
 margin:25px 0;
 `
 
 const StartView = () => {
-    const {active,setActive,setRestaurants} = useContext(RestaurantsContext)
+    const {active,setActive,setRestaurants} = useContext(RestaurantsContext);
     useEffect(()=>{
         fetch(`http://localhost:5000/meals/${active}`).then(data=>data.json()).then(data=>setRestaurants(data)) //get restaurants and push to context
       },[active,setRestaurants])

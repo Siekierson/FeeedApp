@@ -4,11 +4,15 @@ import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
 import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
+import Wrapper from '../../components/atoms/Wrapper'
 
 const AlertH = styled.h2`
 font-size:2.4rem;
 color:red;
 display:${({invalid})=>invalid?'block':'none'};
+`
+const List = styled.ul`
+list-style:none;
 `
 const FlexLabel = styled.label`
 padding:20px;
@@ -79,9 +83,9 @@ const SubmitOrder = () => {
         }
     }
     return(
-        <>
+        <Wrapper up>
         <h1 style={{'padding':'20px'}}>Podsumowanie</h1>
-        <ul>
+        <List>
             {order.map((item,index)=>(
                 <li key={index}>
                     <h2>{item.name} {restaurants.sizes[item.size]}cm ({item.value} zł) </h2>
@@ -89,7 +93,7 @@ const SubmitOrder = () => {
                     <Button onClick={()=>removePizza(index)}>Jednak nie chce</Button>
                 </li>
             ))}
-        </ul>
+        </List>
         <ButtonLink path='/ClassicOrPersonalize'>Zapomniałem/am czegoś</ButtonLink>
         <AlertH invalid={invalid}>Nieprawidłowo wypełniono, nie wysłano zamówienia (sprawdź uważnie wszystkie pola i zamówienie(nie można wysłać pustego zamówienia))</AlertH>
         <Form onSubmit={sendOrder}>
@@ -110,7 +114,7 @@ const SubmitOrder = () => {
             }
             <Button type='submit'>wyślij zamówienie</Button>
         </Form>
-        </>
+        </Wrapper>
     )
 }
 export default SubmitOrder;

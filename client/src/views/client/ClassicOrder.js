@@ -3,17 +3,15 @@ import {RestaurantsContext} from '../../contexts/RestaurantsContext';
 import styled from 'styled-components'
 import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
+import Wrapper from '../../components/atoms/Wrapper';
 
-const Wrapper = styled.div`
-padding: 10%;
-`
 const EditSidebar= styled.ul`
 position:fixed;
 list-style:none;
 transition:.5s;
 height: 100vh;
 width:400px;
-right:${({isEditing}) => isEditing?'0':'-400px'};;
+right:${({isEditing}) => isEditing?'0':'-400px'};
 top:0;
 `
 const Flex = styled.div`
@@ -33,7 +31,7 @@ font-size:1.8rem;
 grid-template-columns: repeat(3,1fr);
 `
 const ClassicOrder = () => {
-    const {active, restaurants, setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
+    const {active, restaurants,setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
     const [isEditing,setEditing]=useState(false);
     const pizzas = restaurants.default_meals;
     const addToOrder=()=>setOrder(prev=>[...prev,hotMeal])
@@ -44,7 +42,7 @@ const ClassicOrder = () => {
         }))}
         }
     return(
-        <Wrapper>
+        <Wrapper up>
         <h1>Klasyczne Menu restauracji {active}</h1>
         <Flex>
             <FlexItem>Nazwa<Sizes>{restaurants.sizes.map(item=><h1 key={item}>{item+'cm  '}</h1>)}</Sizes></FlexItem>
@@ -72,8 +70,9 @@ const ClassicOrder = () => {
                     </div>
                 </li>)}
         </EditSidebar>
+        {hotMeal&&<>
         <ButtonLink onClick={addToOrder} path='/submit' >Do kasy</ButtonLink>
-        <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink>
+        <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink></>}
         </Wrapper>
     )
 }

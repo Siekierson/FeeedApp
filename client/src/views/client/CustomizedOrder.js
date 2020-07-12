@@ -3,10 +3,7 @@ import {RestaurantsContext} from '../../contexts/RestaurantsContext';
 import styled from 'styled-components'
 import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
-
-const Wrapper = styled.div`
-padding: 10%;
-`
+import Wrapper from '../../components/atoms/Wrapper'
 const List = styled.ul`
 margin:20px;
 list-style:none;
@@ -27,7 +24,7 @@ const CustomizedOrder = () => {
         }))}
         }
     return(
-        <Wrapper>
+        <Wrapper up>
             <h1>Twoja kompozycja dania !</h1>
             <h2>Składniki do wyboru</h2>
             <List>
@@ -55,8 +52,9 @@ const CustomizedOrder = () => {
                     </ListItem>
                 )))}
                 
-                <ButtonLink onClick={addToOrder} path='/submit' >Do kasy</ButtonLink>
-                <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink>
+                {hotMeal&&<>
+        <ButtonLink onClick={addToOrder} path='/submit' >Do kasy</ButtonLink>
+        <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink></>}
             </List>
 
         </Wrapper>
