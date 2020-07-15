@@ -5,14 +5,20 @@ import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
 import Wrapper from '../../components/atoms/Wrapper';
 
-const EditSidebar= styled.ul`
+const EditSidebar= styled.div`
 position:fixed;
-list-style:none;
 transition:.5s;
 height: 100vh;
 width:400px;
 right:${({isEditing}) => isEditing?'0':'-400px'};
 top:0;
+`
+const SidebarList= styled.ul`
+list-style:none;
+height: 90vh;
+padding:10px; 
+overflow-x: hidden; 
+overflow-y: auto; 
 `
 const Flex = styled.div`
 margin:40px 20%;
@@ -60,6 +66,7 @@ const ClassicOrder = () => {
         {hotMeal&&<Button onClick={()=>setEditing(!isEditing)}>edytuj składniki</Button>}
         <EditSidebar isEditing={isEditing}>
             <Button onClick={()=>setEditing(false)}>Zakończ edycje</Button>
+            <SidebarList>
             {restaurants.ingredient.map((item,index)=>
                 <li key={item.name}>
                     <Button onClick={()=>isDuplicate(item)}>
@@ -69,6 +76,7 @@ const ClassicOrder = () => {
                         {hotMeal.name?item.value[hotMeal.size]+' zł':item.value.map(item=>item+'zł  ')}
                     </div>
                 </li>)}
+                </SidebarList>
         </EditSidebar>
         {hotMeal&&<>
         <ButtonLink onClick={addToOrder} path='/submit' >Do kasy</ButtonLink>

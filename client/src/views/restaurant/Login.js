@@ -1,6 +1,8 @@
 import React, { useState,useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import {SecretContext} from '../../contexts/SecretContext';
+import Button from '../../components/atoms/Button';
+import Input from '../../components/atoms/Input';
 const Login = ()=>{
   const [logpass,setLogpass]=useState({});
   const {setActive} = useContext(SecretContext);
@@ -26,19 +28,19 @@ const Login = ()=>{
     return (
       <form onSubmit={onSubmit}>
        <h1>Zaloguj się do panelu restauracji</h1>
-        <input
+        <Input
           type="text"
           name="login"
           onChange={handleInputChange}
           required
-        />
-        <input
+        /><br/>
+        <Input
           type="password"
           name="password"
           onChange={handleInputChange}
           required
-        />
-       <input type="submit"/>
+        /><br/>
+       <Button type="submit">Przejdź</Button>
       </form>
     );
 }

@@ -93,6 +93,7 @@ const SubmitOrder = () => {
                     <Button onClick={()=>removePizza(index)}>Jednak nie chce</Button>
                 </li>
             ))}
+            <h2>Całkowita wartość zamówienia: {calcValue()} zł</h2>
         </List>
         <ButtonLink path='/ClassicOrPersonalize'>Zapomniałem/am czegoś</ButtonLink>
         <AlertH invalid={invalid}>Nieprawidłowo wypełniono, nie wysłano zamówienia (sprawdź uważnie wszystkie pola i zamówienie(nie można wysłać pustego zamówienia))</AlertH>

@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import {SecretContext} from '../../contexts/SecretContext';
 import {List,ListItem} from './StyledToPanel';
+import Button from '../../components/atoms/Button';
 const Panel = ()=> {
   const {active,orders,setOrders} = useContext(SecretContext);
   const refresh = async()=>{
@@ -34,7 +35,7 @@ const Panel = ()=> {
               <h4>ulica : {item.client_data.street}</h4>
               <h4>Nr domu lub bloku/mieszkania : {item.client_data.homeNumber}</h4>
                 </ListItem>
-              ))):(<button onClick={()=>{refresh();setInterval(()=>{refresh()},60000)}}>Odśwież zamówienia</button>)
+              ))):(<Button onClick={()=>{refresh();setInterval(()=>{refresh()},60000)}}>Odśwież zamówienia</Button>)
             }
           </List>
         </div>

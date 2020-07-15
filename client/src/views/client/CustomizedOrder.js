@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
 import Wrapper from '../../components/atoms/Wrapper'
+
 const List = styled.ul`
 margin:20px;
 list-style:none;
@@ -13,7 +14,7 @@ margin:20px;
 `
 
 const CustomizedOrder = () => {
-    const { restaurants, setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
+    const { restaurants,hotMeal,setOrder, setHotMeal} = useContext(RestaurantsContext);
     const [clicked,setClicked]=useState(false)
     const ingredients = restaurants.ingredient;
     const addToOrder=()=>setOrder(prev=>[...prev,hotMeal])
