@@ -1,41 +1,9 @@
 import React,{useState,useContext} from 'react';
 import {RestaurantsContext} from '../../contexts/RestaurantsContext';
-import styled from 'styled-components'
 import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
 import Wrapper from '../../components/atoms/Wrapper';
-
-const EditSidebar= styled.div`
-position:fixed;
-transition:.5s;
-height: 100vh;
-width:400px;
-right:${({isEditing}) => isEditing?'0':'-400px'};
-top:0;
-`
-const SidebarList= styled.ul`
-list-style:none;
-height: 90vh;
-padding:10px; 
-overflow-x: hidden; 
-overflow-y: auto; 
-`
-const Flex = styled.div`
-margin:40px 20%;
-width:60%;
-`
-const FlexItem = styled.li`
-display:flex;
-width:100%;
-margin:30px;
-justify-content:space-between;
-`
-const Sizes = styled.div`
-display:grid;
-width:35%;
-font-size:1.8rem;
-grid-template-columns: repeat(3,1fr);
-`
+import {EditSidebar,SidebarList,Flex,FlexItem,Sizes} from './styled/styledClassic';
 const ClassicOrder = () => {
     const {active, restaurants,setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);
     const [isEditing,setEditing]=useState(false);

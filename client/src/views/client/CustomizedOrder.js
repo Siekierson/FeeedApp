@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
 import Wrapper from '../../components/atoms/Wrapper'
-
+import OpacityMotion from '../../components/atoms/OpacityMotion';
 const List = styled.ul`
 margin:20px;
 list-style:none;
@@ -40,8 +40,9 @@ const CustomizedOrder = () => {
                             </Button>)}
                     </div>
                 </ListItem>
-                <h3>A teraz składniki</h3>
-                {clicked &&(ingredients.map(item=>(
+                <h3>A teraz składniki</h3>  
+                {clicked &&(<OpacityMotion>
+                    {ingredients.map(item=>(
                     <ListItem key={item.name}>
                         <Button onClick={()=>isDuplicate(item)}>
                             {item.name}
@@ -51,11 +52,11 @@ const CustomizedOrder = () => {
                         </Button>
                         
                     </ListItem>
-                )))}
-                
-                {hotMeal&&<>
+                ))}
+                </OpacityMotion>)}
+                {hotMeal&&<OpacityMotion>
         <ButtonLink onClick={addToOrder} path='/submit' >Do kasy</ButtonLink>
-        <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink></>}
+        <ButtonLink onClick={addToOrder} path='/ClassicOrPersonalize'>Chce kolejną</ButtonLink></OpacityMotion>}
             </List>
 
         </Wrapper>

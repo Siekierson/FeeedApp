@@ -2,36 +2,9 @@ import React,{useContext,useState} from 'react';
 import {RestaurantsContext} from '../../contexts/RestaurantsContext';
 import ButtonLink from '../../components/atoms/ButtonLink';
 import Button from '../../components/atoms/Button';
-import styled from 'styled-components';
 import Input from '../../components/atoms/Input';
-import Wrapper from '../../components/atoms/Wrapper'
-
-const AlertH = styled.h2`
-font-size:2.4rem;
-color:red;
-display:${({invalid})=>invalid?'block':'none'};
-`
-const List = styled.ul`
-list-style:none;
-`
-const FlexLabel = styled.label`
-padding:20px;
-width:100%;
-text-align:center;
-display:flex;
-justify-content:space-around;
-`
-const FlexItem = styled.div`
-width:50%;
-`
-const Form = styled.form`
-margin:10px 20vw;
-width:60vw;
-display:flex;
-flex-direction:column;
-text-align:center;
-`
-
+import Wrapper from '../../components/atoms/Wrapper';
+import {AlertH,List,FlexItem,FlexLabel,Form} from './styled/styledSubmit';
 const SubmitOrder = () => {
     const {active,order,setOrder,restaurants} = useContext(RestaurantsContext);
     const [data,addData] = useState({});
