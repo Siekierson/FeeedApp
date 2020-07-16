@@ -39,9 +39,8 @@ const CustomizedOrder = () => {
                                 {item.size+'cm  '}
                             </Button>)}
                     </div>
-                </ListItem>
-                <h3>A teraz składniki</h3>  
-                {clicked &&(<OpacityMotion>
+                </ListItem>  
+                {clicked &&(<OpacityMotion><h3>A teraz składniki</h3>
                     {ingredients.map(item=>(
                     <ListItem key={item.name}>
                         <Button onClick={()=>isDuplicate(item)}>

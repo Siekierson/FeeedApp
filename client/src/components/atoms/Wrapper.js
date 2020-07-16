@@ -20,7 +20,7 @@ const pageVariants = {
         y: '100%',
     },
   }
-const Wrapper = ({children,max,up})=><WrapperIn up={up} max={max} initial="initial"
+const Wrapper = ({children,maxs,up})=><WrapperIn up={up} max={maxs} initial="initial"
 animate="in"
 exit="out"
 variants={pageVariants}

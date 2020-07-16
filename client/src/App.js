@@ -39,7 +39,7 @@ const App = () => {
   return (
     <div className="App">
       <RestaurantsProvider>
-        <Video loop autoPlay >
+        <Video loop muted autoPlay >
         <source src={require('./assets/pizza.mp4')} type="video/mp4" />
         </Video>
         <ShadowBox/>

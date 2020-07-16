@@ -20,7 +20,7 @@ const StartView = () => {
         fetch(`http://localhost:5000/meals/${active}`).then(data=>data.json()).then(data=>setRestaurants(data)) //get restaurants and push to context
       },[active,setRestaurants])
     return(
-        <Wrapper max>   
+        <Wrapper maxs>   
             <h1>Zamów jedzenie teraz !</h1>
             <CityMeal>
                    Restauracja: <Select method={e=>setActive(e.target.value)} data={['Pizzeria Karolina','Pizzeria Pepperoni']}/>
