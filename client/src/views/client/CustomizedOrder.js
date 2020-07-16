@@ -1,10 +1,10 @@
 import React,{useContext,useState} from 'react';
-import {RestaurantsContext} from '../../contexts/RestaurantsContext';
+import {RestaurantsContext} from 'contexts/RestaurantsContext';
 import styled from 'styled-components'
-import ButtonLink from '../../components/atoms/ButtonLink';
-import Button from '../../components/atoms/Button';
-import Wrapper from '../../components/atoms/Wrapper'
-import OpacityMotion from '../../components/atoms/OpacityMotion';
+import ButtonLink from 'components/atoms/ButtonLink';
+import Button from 'components/atoms/Button';
+import Wrapper from 'components/atoms/Wrapper'
+import OpacityMotion from 'components/atoms/OpacityMotion';
 const List = styled.ul`
 margin:20px;
 list-style:none;

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import ButtonLink from '../../components/atoms/ButtonLink';
-import Wrapper from '../../components/atoms/Wrapper';
+import ButtonLink from 'components/atoms/ButtonLink';
+import Wrapper from 'components/atoms/Wrapper';
 const Wrappero = styled(Wrapper)`
 display:flex;
 justify-content: space-around;

@@ -1,13 +1,13 @@
 import React from 'react';
-import RestaurantsProvider from './contexts/RestaurantsContext';
-import StartView from './views/client/StartView';
-import ClassicOrPersonalize from './views/client/ClassicOrPersonalize';
-import ClassicOrder from './views/client/ClassicOrder';
-import CustomizedOrder from './views/client/CustomizedOrder';
+import RestaurantsProvider from 'contexts/RestaurantsContext';
+import StartView from 'views/client/StartView';
+import ClassicOrPersonalize from 'views/client/ClassicOrPersonalize';
+import ClassicOrder from 'views/client/ClassicOrder';
+import CustomizedOrder from 'views/client/CustomizedOrder';
 import styled from 'styled-components';
 import {BrowserRouter, Route,Switch} from 'react-router-dom';
-import SubmitOrder from './views/client/SubmitOrder';
-import Restaurant from './views/restaurant/Restaurant';
+import SubmitOrder from 'views/client/SubmitOrder';
+import Restaurant from 'views/restaurant/Restaurant';
 
 const Video = styled.video`
 position:fixed;
@@ -40,7 +40,7 @@ const App = () => {
     <div className="App">
       <RestaurantsProvider>
         <Video loop muted autoPlay >
-        <source src={require('./assets/pizza.mp4')} type="video/mp4" />
+        <source src={require('assets/pizza.mp4')} type="video/mp4" />
         </Video>
         <ShadowBox/>
         <Wrapper>

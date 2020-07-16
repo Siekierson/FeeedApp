@@ -1,5 +1,5 @@
 import React from 'react';
-import SecretProvider from '../../contexts/SecretContext';
+import SecretProvider from 'contexts/SecretContext';
 import styled from 'styled-components'
 import Login from './Login';
 import {BrowserRouter, Route,Switch} from 'react-router-dom';

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
-import {SecretContext} from '../../contexts/SecretContext';
+import {SecretContext} from 'contexts/SecretContext';
 import {List,ListItem} from './StyledToPanel';
-import Button from '../../components/atoms/Button';
+import Button from 'components/atoms/Button';
 const Panel = ()=> {
   const {active,orders,setOrders} = useContext(SecretContext);
   const refresh = async()=>{

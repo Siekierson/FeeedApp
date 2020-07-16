@@ -1,9 +1,9 @@
 import React,{useContext,useState} from 'react';
-import {RestaurantsContext} from '../../contexts/RestaurantsContext';
-import ButtonLink from '../../components/atoms/ButtonLink';
-import Button from '../../components/atoms/Button';
-import Input from '../../components/atoms/Input';
-import Wrapper from '../../components/atoms/Wrapper';
+import {RestaurantsContext} from 'contexts/RestaurantsContext';
+import ButtonLink from 'components/atoms/ButtonLink';
+import Button from 'components/atoms/Button';
+import Input from 'components/atoms/Input';
+import Wrapper from 'components/atoms/Wrapper';
 import {AlertH,List,FlexItem,FlexLabel,Form} from './styled/styledSubmit';
 const SubmitOrder = () => {
     const {active,order,setOrder,restaurants} = useContext(RestaurantsContext);

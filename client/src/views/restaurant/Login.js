@@ -1,8 +1,8 @@
 import React, { useState,useContext } from 'react';
 import { useHistory } from "react-router-dom";
-import {SecretContext} from '../../contexts/SecretContext';
-import Button from '../../components/atoms/Button';
-import Input from '../../components/atoms/Input';
+import {SecretContext} from 'contexts/SecretContext';
+import Button from 'components/atoms/Button';
+import Input from 'components/atoms/Input';
 const Login = ()=>{
   const [logpass,setLogpass]=useState({});
   const {setActive} = useContext(SecretContext);

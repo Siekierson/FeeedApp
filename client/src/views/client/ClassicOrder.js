@@ -1,8 +1,8 @@
 import React,{useState,useContext} from 'react';
-import {RestaurantsContext} from '../../contexts/RestaurantsContext';
-import ButtonLink from '../../components/atoms/ButtonLink';
-import Button from '../../components/atoms/Button';
-import Wrapper from '../../components/atoms/Wrapper';
+import {RestaurantsContext} from 'contexts/RestaurantsContext';
+import ButtonLink from 'components/atoms/ButtonLink';
+import Button from 'components/atoms/Button';
+import Wrapper from 'components/atoms/Wrapper';
 import {EditSidebar,SidebarList,Flex,FlexItem,Sizes} from './styled/styledClassic';
 const ClassicOrder = () => {
     const {active, restaurants,setOrder,hotMeal, setHotMeal} = useContext(RestaurantsContext);

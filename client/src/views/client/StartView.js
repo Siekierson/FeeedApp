@@ -1,9 +1,9 @@
 import React,{useContext,useEffect} from 'react';
 import styled from 'styled-components';
-import Wrapper from '../../components/atoms/Wrapper';
-import Select from '../../components/molecues/Select';
-import ButtonLink from '../../components/atoms/ButtonLink';
-import {RestaurantsContext} from '../../contexts/RestaurantsContext';
+import Wrapper from 'components/atoms/Wrapper';
+import Select from 'components/molecues/Select';
+import ButtonLink from 'components/atoms/ButtonLink';
+import {RestaurantsContext} from 'contexts/RestaurantsContext';
 
 const CityMeal = styled.div`
 margin:25px 0;
