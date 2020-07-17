@@ -3,38 +3,38 @@
 # How this looks Link: [Click](https://www.youtube.com/watch?v=_cliokYwQtQ)
 
 ## Stack
-*-React
-*-Node.js
-*-Express.js
-*-PostgreSQL
+ - React
+ - Node.js
+ - Express.js
+ - PostgreSQL
 
 ## How to power this on your mashine
 You must create postgres database on your comp with 2 tables.
 1.Install Postgres
 2.In project terminal
-...
+```bash
 cd server
 nodemon app
-...
+```
 3. In terminal out of project 
-...
+```bash
 psql -U postgres
 (write password default Siekierson)
 CREATE DATABASE FEEED;
 \c feeed
 (copy table line 3:13 from /server/database.sql, paste in terminal, enter)
 (copy table line 14:21 from /server/database.sql, paste in terminal, enter)
-...
+```
 now we have database
 4.We must add restaurant data to database. Open Postman. url:http://localhost:5000/addRestaurant, type:post, body (example):
-...
+```bash
 {
 "login":"Karolina"
 "password":"first"
 }
-...
+```
 5. Next step is adding properties like city and menu. In postman:  url:http://localhost:5000/editRestaurant, type:put, body (example: down below):
-...
+```bash
 {
         "fullname": "Pizzeria Karolina",
         "city": "Siemiatycze",
@@ -148,19 +148,18 @@ now we have database
             }
         ]
     }
-...
+```
 
 6. Now we can run app. We must have opened terminal with that commands:
-...
+```bash
 cd server
 nodemon app
-...
+```
 7. Open new terminal without close above terminal. In new write
-...
+```bash
 cd client
 npm start
-...
-
+```
 
 
 
